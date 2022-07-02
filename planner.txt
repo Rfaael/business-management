@@ -1,0 +1,53 @@
+//CRIAR TODAS AS REGRAS DE NEGOCIOS
+
+//SOMENTE ARMAZENAR DADOS CRITICOS SE ESTIVEREM ENCRIPTOGRAFADOS.
+
+//ADICIONAR SISTEMA DE TOKEN, JWT
+
+//ADICIONAR SISTEMA .ENV
+
+=> MIDDLEWARE
+    1- Criar middleware de autenticacao []
+        *ULTILIZAR JWT []
+
+=> COMPANY
+    1- Criar perfil da empresa. [X]
+        *TODOS OS DADOS DEVEM SER PREENCHIDOS. [X]
+        *SALVAR OS DADOS CRITICOS DA EMPRESA CRIPTOGRAFADOS []
+
+    2- Poder adicionar os funcionarios. [X]
+        *TODOS OS DADOS DEVEM SER PREENCHIDOS. [X]
+        *SALVAR OS DADOS CRITICOS DOS FUNCIONARIOS CRIPTOGRAFADOS []
+
+    3- Deve poder deletar um funconario. [X]
+        *ID DO EMPLOYEE INFORMADO DEVE SER VALIDO [x]
+
+    4- Conseguir realizar o get dos dados da empresa. []
+        *EMPRESA TEM QUE ESTAR VALIDADA PELO MIDDLEWARE []
+        *ID DA EMPRESA DEVER SER REPASSADO PELO MIDDLEWARE DE VALIDACAO []
+    
+    5- Conseguir ver os dados dos funcionarios associados a sua empresa. []
+        *DEVERA SER NECESSARIO VALIDACAO PELO MIDDLEWARE []
+        *APENAS A CONTA PRINCIPAL DA EMPRESA DEVE PODER TER ACESSO AS INFOMACOES []
+
+    6- Conseguir fazer update no perfil do funcionario. []
+        *DEVERA SER NECESSARIO VALIDACAO PELO MIDDLEWARE []        
+
+    7- Criar area de login da empresa. [x]
+        *VALIDACAO FEITA PELO MIDDLEWARE [x]
+        *ULTILIZAR JWT []
+
+=> Employee 
+    1- Deve poder realizar "analise" de service request
+
+    2- Deve poder realizar vendas / criar uma nova venda. []
+        *
+    3- Deve poder realizar cadastro de clientes. []
+        *
+    4- O Funcionario deve poder criar uma nova requesicao de servico. []
+        *
+    5- Conseguir ver os clientes cadastrados. []
+        *
+    6- Criar area de login do employee []
+        *ultilizar um middleware
+

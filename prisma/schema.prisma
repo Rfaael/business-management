@@ -1,0 +1,88 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Company {
+  id String @id
+  
+  name String
+  cnpj String
+  email String
+  employees Employee[]
+  login String
+  password String
+  phone_number Int
+
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model Employee {
+  id String @id
+  
+  company Company @relation(fields: [company_id], references: [id])
+  company_id String
+
+  name String 
+  email String
+  login String
+  password String
+  phone_number Int
+
+  position String
+  permissions String
+
+  history Service[]
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model Service {
+  id String @id
+
+  costumer_profile Costumer @relation(fields: [costumer_id], references: [id])
+  costumer_id String
+
+  employee_profile Employee @relation(fields: [employee_id], references: [id])
+  employee_id String
+
+  description String
+  additional_description String
+  photos String
+
+  reference String 
+  status String
+  type String 
+  budget Int 
+
+  final_result String
+
+  arrival_date String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+
+model Costumer {
+  id String @id
+
+  name String
+  email String
+  phone_number Int
+  adress String
+
+  services Service[]
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
