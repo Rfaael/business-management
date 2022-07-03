@@ -39,13 +39,37 @@ model Employee {
   phone_number Int
 
   position String
-  permissions String
+
+  permission Permissions @relation(fields: [permissions_list], references: [id])
+  permissions_list String
 
   history Service[]
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 }
+
+model Permissions {
+  id String @id
+
+  name String
+
+  employees_profiles Employee[]  
+
+  addNewEmployee Boolean
+  deleteAnEmployee Boolean
+  updateAnEmployee Boolean
+  getCompanyProfile Boolean
+
+  createAnewCostumerProfile Boolean
+  getCostumerProfile Boolean
+  createAnewSale Boolean
+  createAnewService Boolean
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
 
 model Service {
   id String @id
