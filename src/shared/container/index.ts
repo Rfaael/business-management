@@ -3,6 +3,8 @@ import { ICompanyRepository } from "../../modules/company/infra/repositories/ICo
 import { IEmployeeRepository } from "../../modules/company/infra/repositories/IEmployeeRepository";
 import { CompanyRepository } from "../../modules/company/infra/repositories/implementations/CompanyRepository";
 import { EmployeeRepository } from "../../modules/company/infra/repositories/implementations/EmployeeRepository";
+import { PositionRepository } from "../../modules/company/infra/repositories/implementations/PositionRepository";
+import { IPositionRepository } from "../../modules/company/infra/repositories/IPositionsRepository";
 import { ICostumerRepository } from "../repositories/ICostumerRepository";
 import { CostumerRepository } from "../repositories/implementations/CostumerRepository";
 
@@ -22,4 +24,10 @@ container.registerSingleton<IEmployeeRepository>(
 container.registerSingleton<ICostumerRepository>(
     "CostumerRepository",
     CostumerRepository
+)
+
+//POSITION REPOSITORY
+container.registerSingleton<IPositionRepository>(
+    "PositionRepository",
+    PositionRepository
 )

@@ -20,8 +20,7 @@ class AddNewEmployeeUseCase {
         login,
         password,
         phone_number,
-        position,
-        permissions,
+        position_id,
     }: IAddNewEmployee): Promise<Employee | any> {
 
         //CHECK IF EMPLOYEE ALREDY EXISTS
@@ -40,8 +39,7 @@ class AddNewEmployeeUseCase {
                 login,
                 password,
                 phone_number,
-                position,
-                permissions,
+                position_id,
             }
         );
 

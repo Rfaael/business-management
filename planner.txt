@@ -2,13 +2,18 @@
 
 //SOMENTE ARMAZENAR DADOS CRITICOS SE ESTIVEREM ENCRIPTOGRAFADOS.
 
-//ADICIONAR SISTEMA DE TOKEN, JWT
+//ADICIONAR SISTEMA DE TOKEN, JWT [X]
 
 //ADICIONAR SISTEMA .ENV
 
+//REORGANIZAR O FLOW DO SISTEMA
+
+//CRIAR UMA DOCUMENTACAO MAIS EXPLICADA
+
 => MIDDLEWARE
-    1- Criar middleware de autenticacao []
-        *ULTILIZAR JWT []
+    1- Criar middleware de autenticacao [X]
+        *ULTILIZAR JWT [X]
+        *CRIAR AUTENTICACAO PELO POSITION DO FUNCIONARIO []
 
 => COMPANY
     1- Criar perfil da empresa. [X]
@@ -17,6 +22,8 @@
 
     2- Poder adicionar os funcionarios. [X]
         *TODOS OS DADOS DEVEM SER PREENCHIDOS. [X]
+        *CRIAR VERIFICACAO DO CAMPO DE POSISITION DENTRO DO CADASTRO DE FUNCIONARIOS []
+            *FAZER UPDATE DENTRO DO CADASTRO DE FUNCIONARIOS, POR CAUSA DO COMPO DE POSISITION []
         *SALVAR OS DADOS CRITICOS DOS FUNCIONARIOS CRIPTOGRAFADOS []
 
     3- Deve poder deletar um funconario. [X]
@@ -29,13 +36,19 @@
     5- Conseguir ver os dados dos funcionarios associados a sua empresa. []
         *DEVERA SER NECESSARIO VALIDACAO PELO MIDDLEWARE []
         *APENAS A CONTA PRINCIPAL DA EMPRESA DEVE PODER TER ACESSO AS INFOMACOES []
+        *NAO DEVE SER RETORNADO TODOS OS DADOS SOBRE POSITION []
 
     6- Conseguir fazer update no perfil do funcionario. []
         *DEVERA SER NECESSARIO VALIDACAO PELO MIDDLEWARE []        
 
     7- Criar area de login da empresa. [x]
         *VALIDACAO FEITA PELO MIDDLEWARE [x]
-        *ULTILIZAR JWT []
+        *ULTILIZAR JWT [X]
+            *AJUSTAR AS PERMISSOES []
+
+    8- A empresa deve poder cadastrar as permisoes para cada usuario [x]
+        *CRIAR REGRAS DE NEGOCIOS
+            *NAO DEVE PODER CADASTRAR POSITIONS JA EXISTENTES. []
 
 => Employee 
     1- Deve poder realizar "analise" de service request

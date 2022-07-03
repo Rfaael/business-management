@@ -11,11 +11,10 @@ class AddNewEmployeeController {
             login,
             password,
             phone_number,
-            position,
-            permissions,
+            position_id,
         } = request.body;
 
-        if (!company_id.trim() || !name.trim() || !email.trim() || !password.trim() || !position.trim() || !permissions.trim()) {
+        if (!company_id.trim() || !name.trim() || !email.trim() || !password.trim() || !position_id.trim()) {
             return response.send("Por favor preencha todos os campos !");
         }
 
@@ -28,8 +27,7 @@ class AddNewEmployeeController {
             login,
             password,
             phone_number,
-            position,
-            permissions,
+            position_id,
         });
 
         return response.status(201).json(employeeProfile);

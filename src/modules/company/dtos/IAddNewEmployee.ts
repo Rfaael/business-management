@@ -6,8 +6,7 @@ interface IAddNewEmployee {
     login: string;
     password: string;
     phone_number: number;
-    position: string;
-    permissions: string;
+    position_id: string;
 };
 
 export { IAddNewEmployee };

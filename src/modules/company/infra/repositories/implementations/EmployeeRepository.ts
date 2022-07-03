@@ -1,4 +1,4 @@
-import { Employee, Prisma, PrismaClient } from "@prisma/client";
+import { Employee, PrismaClient } from "@prisma/client";
 import { IAddNewEmployee } from "../../../dtos/IAddNewEmployee";
 import { IEmployeeRepository, EmployeeProfile } from "../IEmployeeRepository";
 
@@ -28,7 +28,8 @@ class EmployeeRepository implements IEmployeeRepository {
                         email: true,
                         phone_number: true
                     }
-                }
+                },
+                position: true
             }
         });
 
@@ -42,9 +43,8 @@ class EmployeeRepository implements IEmployeeRepository {
             name,
             login,
             password,
-            permissions,
             phone_number,
-            position
+            position_id
         }: IAddNewEmployee): Promise<Employee> {
 
         const employee = await this.prismaClient.employee.create({
@@ -55,9 +55,8 @@ class EmployeeRepository implements IEmployeeRepository {
                 name,
                 login,
                 password,
-                permissions,
                 phone_number,
-                position
+                position_id
             }
         });
 
