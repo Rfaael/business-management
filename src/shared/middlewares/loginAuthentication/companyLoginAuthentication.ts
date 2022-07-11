@@ -4,7 +4,7 @@ import { CompanyLoginUseCase } from "../../../modules/company/useCases/CompanyLo
 
 import { sign } from "jsonwebtoken";
 
-export async function CompanyAuthentication(request: Request, response: Response, next: NextFunction) {
+export async function CompanyLoginAuthentication(request: Request, response: Response, next: NextFunction) {
 
     const {
         login,
@@ -29,6 +29,7 @@ export async function CompanyAuthentication(request: Request, response: Response
 
         request.info = {
             token,
+            id: companyProfileLogin
         };
         next()
     } else {

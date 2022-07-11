@@ -1,15 +1,17 @@
-import { Costumer, Service } from "@prisma/client";
+import { Service } from "@prisma/client";
 import { ICostumerDTO } from "../../modules/employee/dtos/ICostumerDTO";
 import { IServiceDTO } from "../../modules/employee/dtos/IServiceDTO";
 
 interface ICostumerRepository {
-    create({
+    createNewCostumer({
         email,
         login,
         name,
         password,
         phone_number
-    }: ICostumerDTO): Promise<Costumer>;
+    }: ICostumerDTO): Promise<any>;
+
+    createNewCostumerPresencial({ email, login, name, last_name, password, phone_number }: ICostumerDTO): Promise<any>;
 
     createNewService({
         additional_description,

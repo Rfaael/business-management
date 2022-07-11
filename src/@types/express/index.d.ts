@@ -5,6 +5,7 @@ declare global {
         interface Request {
             info?: Record<string, any>
             token?: Record<string, any>
+            id?: Record<string, any>
         }
     }
 }

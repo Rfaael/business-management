@@ -13,6 +13,7 @@ interface IPositionRepository {
         position_name,
         updateAnEmployee
     }: IAddNewPosition): Promise<Position>;
+
 }
 
 export { IPositionRepository };

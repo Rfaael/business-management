@@ -1,19 +1,52 @@
-//CRIAR TODAS AS REGRAS DE NEGOCIOS
+//NECESSARIO ESTUDAR MAIS SOBRE AUTENTICACAO E PERMISOES [] !!!
 
-//SOMENTE ARMAZENAR DADOS CRITICOS SE ESTIVEREM ENCRIPTOGRAFADOS.
+//SOMENTE ARMAZENAR DADOS CRITICOS SE ESTIVEREM ENCRIPTOGRAFADOS. []
 
 //ADICIONAR SISTEMA DE TOKEN, JWT [X]
 
-//ADICIONAR SISTEMA .ENV
+//ADICIONAR SISTEMA .ENV []
 
-//REORGANIZAR O FLOW DO SISTEMA
+//REORGANIZAR O FLOW DO SISTEMA []
 
-//CRIAR UMA DOCUMENTACAO MAIS EXPLICADA
+//REVISAR E FAZER ANOTACOES SOBRE O SISTEMA E SEU FUNCIONAMENTO []
+	
+====>	**REVISAR O SCHEMA DO PRISMA DENTRO DA APLICACAO** [] <======
+
+
+    **REVISAR O REPOSITORIO DE COSTUMERS REPOSITORY
+	
+	1- modules/company.
+		-Module company possui tais repositorios: Company, Employee, Position (E SUAS INTERFACES)
+			-Funcao "findEmployeeById" foi refatorada dentro do repositorio de employees.
+				-e a pasta de useCase tam bem foi alterada junto com o controller e use case.
+			-E necessario revisar/refatorar a funcao de update dentro de employeesRepository []
+		-Todas as rotas que salvam algum dado critico devem salvar o mesmo criptografado []
+
+	2-UseCase/company
+		-Sera necessario revisar/definir todas as regras de negocios []
+			*EM TODOS OS USE CASES []
+			-Estudar melhores formas de "conferir" se todos os compos estao preenchidos []
+        -Update employee porfile deve ser REFATORADO
+	
+	3-modules/employee.
+		-employee nao possui nenhum repository dentro da pasta repositories.
+
+
+	4-UseCase/emploeey.
+		1-(CreateNewSale) ==> REVISAR []
+		2-(CreateNewCostumer) ==> REVISAR[]
+		3-(CreateNewService) ==> REVISAR[]
+		4-(EmployeeLogin) ==> REVISAR[]
+		5-(GetCostumerProfile) ==> REVISAR[]
+
+
+
 
 => MIDDLEWARE
     1- Criar middleware de autenticacao [X]
         *ULTILIZAR JWT [X]
         *CRIAR AUTENTICACAO PELO POSITION DO FUNCIONARIO []
+
 
 => COMPANY
     1- Criar perfil da empresa. [X]
@@ -50,7 +83,22 @@
         *CRIAR REGRAS DE NEGOCIOS
             *NAO DEVE PODER CADASTRAR POSITIONS JA EXISTENTES. []
 
+*PARA OS CLIENTES VAO EXISTIR DUAS TABELAS UMA PARA CLIENTES QUE FIZERAM SEU CADASTRO DENTRO DO SITE.
+*
+*E OUTRA TABELA PARA OS CLIENTES QUE TIVERAM SEU CADASTRO FEITOS PRESENCIALMENTE...
+*
+
 => Employee 
+
+    ++ REGRAS DE NEGOCIOS ++
+
+*Sua responsabilidade sera de "pegar/analisar" novos services,ex: fazer o orcamento e enviar ao cliente.=
+*Podera realizar vendas
+*Podera abrir novos services associando ao um perfil de client
+    => so e permitido que o funcionario abra um service em um atendimento presencial
+*No atendimento presencial o funcionario podera cadastrar o perfil de um client....
+*Todo funcionario podera pesquisar perfils de clientes.
+
     1- Deve poder realizar "analise" de service request
 
     2- Deve poder realizar vendas / criar uma nova venda. []
@@ -63,4 +111,12 @@
         *
     6- Criar area de login do employee []
         *ultilizar um middleware
+ 
+    7-REFATORAR A FUNCAO DE UPDATE DO PERFIL DO EMPLOYEE []
 
+
+
+
+=> Client
+    --> Adicionar ao schema do banco de dados se a conta foi criada por um funcionario em atendimento presencial 
+        -> EX: create_by_employee_id: null | (ID do funcionario que criou a conta)

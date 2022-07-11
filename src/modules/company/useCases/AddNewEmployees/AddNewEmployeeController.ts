@@ -7,6 +7,7 @@ class AddNewEmployeeController {
         const {
             company_id,
             name,
+            last_name,
             email,
             login,
             password,
@@ -14,15 +15,18 @@ class AddNewEmployeeController {
             position_id,
         } = request.body;
 
-        if (!company_id.trim() || !name.trim() || !email.trim() || !password.trim() || !position_id.trim()) {
+        if (!name.trim() || !email.trim() || !password.trim() || !position_id.trim()) {
             return response.send("Por favor preencha todos os campos !");
         }
+
+        console.log(request.info);
 
         const useCase = container.resolve(AddNewEmployeeUseCase);
 
         const employeeProfile = await useCase.execute({
             company_id,
             name,
+            last_name,
             email,
             login,
             password,

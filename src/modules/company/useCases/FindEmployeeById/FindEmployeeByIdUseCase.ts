@@ -2,7 +2,7 @@ import { inject, injectable } from "tsyringe";
 import { IEmployeeRepository } from "../../infra/repositories/IEmployeeRepository";
 
 @injectable()
-class GetEmployeeUseCase {
+class FindEmployeeByIdUseCase {
     constructor(
         @inject("EmployeesRepository")
         private employeesRepository: IEmployeeRepository
@@ -10,10 +10,10 @@ class GetEmployeeUseCase {
 
     }
     async execute(id: string) {
-        const allEmployees = await this.employeesRepository.getEmployee(id);
+        const allEmployees = await this.employeesRepository.findEmployeeById(id);
 
         return allEmployees;
     }
 }
 
-export { GetEmployeeUseCase };
+export { FindEmployeeByIdUseCase };

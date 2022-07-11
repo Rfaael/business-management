@@ -2,13 +2,16 @@ import { IAddNewEmployee } from "../../dtos/IAddNewEmployee";
 import { Employee } from "@prisma/client";
 import { inject, injectable } from "tsyringe";
 import { IEmployeeRepository } from "../../infra/repositories/IEmployeeRepository";
+import { IPositionRepository } from "../../infra/repositories/IPositionsRepository";
 
 @injectable()
 class AddNewEmployeeUseCase {
 
     constructor(
         @inject("EmployeesRepository")
-        private employeesRepository: IEmployeeRepository
+        private employeesRepository: IEmployeeRepository,
+        @inject("PositionRepository")
+        private positionRepository: IPositionRepository
     ) {
 
     }
@@ -16,6 +19,7 @@ class AddNewEmployeeUseCase {
     async execute({
         company_id,
         name,
+        last_name,
         email,
         login,
         password,
@@ -35,6 +39,7 @@ class AddNewEmployeeUseCase {
             {
                 company_id,
                 name,
+                last_name,
                 email,
                 login,
                 password,

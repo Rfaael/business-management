@@ -6,7 +6,6 @@ import { Company } from "@prisma/client";
 
 //UUID FOR COMPANY ID
 import { v4 as uuid } from "uuid";
-//CRYPTO MODULE
 
 
 class CompanyRepository implements ICompanyRepository {
@@ -76,7 +75,6 @@ class CompanyRepository implements ICompanyRepository {
         });
 
         if (!companyProfile) {
-            console.log(companyProfile);
             return false;
         }
 

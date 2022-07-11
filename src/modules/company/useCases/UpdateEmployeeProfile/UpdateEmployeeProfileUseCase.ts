@@ -1,5 +1,16 @@
 import { inject, injectable } from "tsyringe";
-import { EmployeeProfile, IEmployeeRepository } from "../../infra/repositories/IEmployeeRepository";
+import { IEmployeeRepository } from "../../infra/repositories/IEmployeeRepository";
+
+
+interface teste {
+    email: string;
+    name: string;
+    password: string;
+    phone_number: string;
+    position: string;
+}
+
+
 
 
 @injectable()
@@ -15,22 +26,20 @@ class UpdateEmployeeProfileUseCase {
         email,
         name,
         password,
-        permissions,
         phone_number,
         position
-    }: EmployeeProfile) {
+    }: teste) {
 
-        const updatedProfile = this.employeeRepository.updateProfile(id, {
-            email,
-            name,
-            password,
-            permissions,
-            phone_number,
-            position
-        });
+        // const updatedProfile = this.employeeRepository.updateProfile(id, {
+        //     email,
+        //     name,
+        //     password,
+        //     phone_number,
+        //     position
+        // });
 
 
-        return updatedProfile;
+        // return updatedProfile;
     }
 }
 

@@ -17,16 +17,16 @@ class UpdateEmployeeProfileController {
 
         const updateEmployeeProfileUseCase = container.resolve(UpdateEmployeeProfileUseCase);
 
-        const employeeUpdated = await updateEmployeeProfileUseCase.execute(id, {
-            email,
-            name,
-            password,
-            permissions,
-            phone_number,
-            position
-        });
+        // const employeeUpdated = await updateEmployeeProfileUseCase.execute(id, {
+        //     email,
+        //     name,
+        //     password,
+        //     permissions,
+        //     phone_number,
+        //     position
+        // });
 
-        return response.status(201).json(employeeUpdated);
+        return response.status(201).json();
     }
 }
 

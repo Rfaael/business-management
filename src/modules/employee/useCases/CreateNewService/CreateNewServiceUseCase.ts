@@ -1,15 +1,16 @@
 import { Service } from "@prisma/client";
 import { inject, injectable } from "tsyringe";
 
-import { ICostumerRepository } from "../../../../shared/repositories/ICostumerRepository";
 import { IServiceDTO } from "../../dtos/IServiceDTO";
+import { IServiceRepository } from "../../infra/repositories/IServiceRepository";
 
 
 @injectable()
 class CreateNewServiceUseCase {
+
     constructor(
-        @inject("CostumerRepository")
-        private costumerRepository: ICostumerRepository
+        @inject("ServiceRepository")
+        private serviceRepository: IServiceRepository
     ) { }
 
     async execute({
@@ -25,7 +26,8 @@ class CreateNewServiceUseCase {
         status,
         type,
     }: IServiceDTO): Promise<Service> {
-        const service = await this.costumerRepository.createNewService({
+
+        const newServiceRequest = await this.serviceRepository.createNewService({
             employee_id,
             additional_description,
             arrival_date,
@@ -39,7 +41,7 @@ class CreateNewServiceUseCase {
             type,
         });
 
-        return service;
+        return newServiceRequest;
     }
 }
 

@@ -4,7 +4,7 @@ import { CreateCompanyController } from "../../../modules/company/useCases/Creat
 import { CreateNewPositionController } from "../../../modules/company/useCases/CreateNewPosition/CreateNewPositionController";
 import { GetCompanyDataController } from "../../../modules/company/useCases/GetCompanyData/GetCompanyDataController";
 import { jwtAuthentication } from "../../middlewares/jwtAuthentication.ts/jwtAuthentication";
-import { CompanyAuthentication } from "../../middlewares/loginAuthentication/companyAuthentication";
+import { CompanyLoginAuthentication } from "../../middlewares/loginAuthentication/companyLoginAuthentication";
 
 const companyRoutes = Router();
 
@@ -19,7 +19,7 @@ const companyLoginController = new CompanyLoginController();
 const createNewPositionController = new CreateNewPositionController();
 //GET POSITIONT BY ID
 
-companyRoutes.post("/login", CompanyAuthentication, companyLoginController.handle);
+companyRoutes.post("/login", CompanyLoginAuthentication, companyLoginController.handle);
 
 companyRoutes.post("/", createCompanyController.handle);
 

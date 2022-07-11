@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { container } from "tsyringe";
 import { EmployeeLoginUseCase } from "../../../modules/employee/useCases/EmployeeLogin/EmployeeLoginUseCase";
 
-export async function employeeAuthentication(request: Request, response: Response, next: NextFunction) {
+export async function employeeLoginAuthentication(request: Request, response: Response, next: NextFunction) {
     const {
         login,
         password

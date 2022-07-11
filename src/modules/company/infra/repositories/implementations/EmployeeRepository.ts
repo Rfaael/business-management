@@ -1,6 +1,6 @@
 import { Employee, PrismaClient } from "@prisma/client";
 import { IAddNewEmployee } from "../../../dtos/IAddNewEmployee";
-import { IEmployeeRepository, EmployeeProfile } from "../IEmployeeRepository";
+import { IEmployeeRepository } from "../IEmployeeRepository";
 
 //UUID for employee ID
 import { v4 as uuid } from "uuid";
@@ -10,13 +10,13 @@ class EmployeeRepository implements IEmployeeRepository {
 
 
     //REFATORAR ESTA FUNCAO
-    async getEmployee(id: string): Promise<Employee[]> {
+    async findEmployeeById(id: string): Promise<Employee> {
 
         //FUNCAO SO PODERA SER ACESSADA POR UMA "EMPRESA" AUTENTICADA
         //NECESSITA SER UMA FUNCAO QUE RETORNE TODOS OS FUNCIONARIOS DA EMPRESA AUTENTICADA
         //FAZENDO A BUSCA PELO ID DA EMRPESA, VINDO DO MIDDLEWARE 
 
-        const allEmployees = await this.prismaClient.employee.findMany({
+        const employee = await this.prismaClient.employee.findUnique({
             where: {
                 id
             },
@@ -33,7 +33,7 @@ class EmployeeRepository implements IEmployeeRepository {
             }
         });
 
-        return allEmployees;
+        return employee;
     }
 
     async addNewEmployee(
@@ -84,27 +84,10 @@ class EmployeeRepository implements IEmployeeRepository {
         return employee;
     }
 
-    async findEmployeeById(id: string): Promise<Employee> {
-        const employee = await this.prismaClient.employee.findFirst({
-            where: {
-                id
-            }
-        });
-
-        return employee;
-    }
-
-    async updateProfile(emp_id: string, { email, name, password, permissions, phone_number, position }: EmployeeProfile): Promise<Employee> {
+    //REFATORAR ESTA FUNCAO
+    async updateProfile(id: string, { email, name, password, phone_number, position_id }: IAddNewEmployee): Promise<Employee> {
         const employee = await this.prismaClient.employee.update({
-            where: { id: emp_id },
-            data: {
-                email: email != " " ? email : null,
-                name: name != " " ? name : null,
-                password: password != " " ? password : null,
-                permissions: permissions != " " ? permissions : null,
-                phone_number: phone_number != " " ? phone_number : null,
-                position: position != " " ? position : null,
-            }
+            where: { id }
         });
 
         return employee;

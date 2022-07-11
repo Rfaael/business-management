@@ -1,4 +1,4 @@
-import { Costumer, PrismaClient, Service } from "@prisma/client";
+import { PrismaClient, Service } from "@prisma/client";
 import { ICostumerDTO } from "../../../modules/employee/dtos/ICostumerDTO";
 import { ICostumerRepository } from "../ICostumerRepository";
 
@@ -9,19 +9,30 @@ import { IServiceDTO } from "../../../modules/employee/dtos/IServiceDTO";
 
 
 class CostumerRepository implements ICostumerRepository {
-    private client: any = new PrismaClient();
+    private prismaClient: any;
 
-    async create({ email, login, name, password, phone_number }: ICostumerDTO): Promise<Costumer> {
-        const costumerProfile = await this.client.Costumer.create({
+
+    constructor() {
+        this.prismaClient = new PrismaClient();
+    }
+
+    async createNewCostumer({ email, login, name, password, phone_number }: ICostumerDTO): Promise<any> {
+        throw new Error("Method not implemented.");
+    }
+
+    async createNewCostumerPresencial({ email, login, name, last_name, password, phone_number }: ICostumerDTO): Promise<void> {
+        const costumerProfile = await this.prismaClient.Costumer_presencial.create({
             data: {
                 id: uuid(),
                 email,
                 login,
                 name,
+                last_name,
                 password,
                 phone_number
             }
         });
+
 
         return costumerProfile;
     }
@@ -39,7 +50,7 @@ class CostumerRepository implements ICostumerRepository {
         status,
         type,
     }: IServiceDTO): Promise<Service> {
-        const service = await this.client.Service.create({
+        const service = await this.prismaClient.Service.create({
             data: {
                 id: uuid(),
                 employee_id,
@@ -60,7 +71,7 @@ class CostumerRepository implements ICostumerRepository {
     }
 
     async getCostumerProfile(id: string): Promise<Service> {
-        const costumerProfile = await this.client.Costumer.findFirst({
+        const costumerProfile = await this.prismaClient.Costumer.findFirst({
             where: {
                 id
             },
@@ -73,7 +84,7 @@ class CostumerRepository implements ICostumerRepository {
     }
 
     async findCostumerByEmail(email: string): Promise<Service> {
-        const costumer = await this.client.costumer.findFirst({
+        const costumer = await this.prismaClient.costumer.findFirst({
             where: {
                 email
             }
@@ -83,7 +94,7 @@ class CostumerRepository implements ICostumerRepository {
     }
 
     async findCostumerById(id: string): Promise<Service> {
-        const costumer = await this.client.costumer.findFirst({
+        const costumer = await this.prismaClient.costumer.findFirst({
             where: {
                 id
             }

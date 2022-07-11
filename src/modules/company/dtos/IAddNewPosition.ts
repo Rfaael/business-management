@@ -5,7 +5,7 @@ interface IAddNewPosition {
 
     position_name: string;
 
-    // employees_profiles: Position[];
+    employees_profiles?: Position[];
 
     addNewEmployee: boolean;
     deleteAnEmployee: boolean;

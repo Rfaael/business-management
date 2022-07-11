@@ -43,6 +43,8 @@ class PositionRepository implements IPositionRepository {
 
         return newPosition;
     }
+
+
 }
 
 export { PositionRepository };

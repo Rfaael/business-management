@@ -8,6 +8,7 @@ class CreateNewCostumerController {
             email,
             login,
             name,
+            last_name,
             password,
             phone_number
         } = request.body;
@@ -18,6 +19,7 @@ class CreateNewCostumerController {
             email,
             login,
             name,
+            last_name,
             password,
             phone_number
         });
