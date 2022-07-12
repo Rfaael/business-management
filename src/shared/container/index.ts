@@ -7,8 +7,8 @@ import { PositionRepository } from "../../modules/company/infra/repositories/imp
 import { IPositionRepository } from "../../modules/company/infra/repositories/IPositionsRepository";
 import { ServiceRepository } from "../../modules/employee/infra/repositories/implementations/ServiceRepository";
 import { IServiceRepository } from "../../modules/employee/infra/repositories/IServiceRepository";
-import { ICostumerRepository } from "../repositories/ICostumerRepository";
-import { CostumerRepository } from "../repositories/implementations/CostumerRepository";
+import { ICostumerRepository } from "../../modules/company/infra/repositories/ICostumersRepository";
+import { CostumersRepository } from "../../modules/company/infra/repositories/implementations/CostumersRepository";
 
 //COMPANY REPOSITORY
 container.registerSingleton<ICompanyRepository>(
@@ -24,8 +24,8 @@ container.registerSingleton<IEmployeeRepository>(
 
 //COSTUMERS REPOSITORY
 container.registerSingleton<ICostumerRepository>(
-    "CostumerRepository",
-    CostumerRepository
+    "CostumersRepository",
+    CostumersRepository
 )
 
 //POSITION REPOSITORY

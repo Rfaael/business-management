@@ -103,10 +103,10 @@ model CostumerPresencial {
   id String @id
 
   name String
-  last_name String
-  email String
+  last_name String?
+  email String?
   phone_number Int
-  adress String
+  address String?
 
   services Service[]
 
@@ -126,7 +126,7 @@ model CostumerOnline {
   last_name String
   email String
   phone_number Int
-  adress String
+  address String
 
   services Service[]
 

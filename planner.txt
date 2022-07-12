@@ -12,7 +12,6 @@
 	
 ====>	**REVISAR O SCHEMA DO PRISMA DENTRO DA APLICACAO** [] <======
 
-
     **REVISAR O REPOSITORIO DE COSTUMERS REPOSITORY
 	
 	1- modules/company.
@@ -31,7 +30,6 @@
 	3-modules/employee.
 		-employee nao possui nenhum repository dentro da pasta repositories.
 
-
 	4-UseCase/emploeey.
 		1-(CreateNewSale) ==> REVISAR []
 		2-(CreateNewCostumer) ==> REVISAR[]
@@ -39,14 +37,10 @@
 		4-(EmployeeLogin) ==> REVISAR[]
 		5-(GetCostumerProfile) ==> REVISAR[]
 
-
-
-
 => MIDDLEWARE
     1- Criar middleware de autenticacao [X]
         *ULTILIZAR JWT [X]
         *CRIAR AUTENTICACAO PELO POSITION DO FUNCIONARIO []
-
 
 => COMPANY
     1- Criar perfil da empresa. [X]
@@ -114,9 +108,7 @@
  
     7-REFATORAR A FUNCAO DE UPDATE DO PERFIL DO EMPLOYEE []
 
-
-
-
 => Client
+    **COSTUMER DEVE ESTAR ASSOCIADO A UMA COMPANY
     --> Adicionar ao schema do banco de dados se a conta foi criada por um funcionario em atendimento presencial 
         -> EX: create_by_employee_id: null | (ID do funcionario que criou a conta)

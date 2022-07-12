@@ -1,6 +1,6 @@
 import { Service } from "@prisma/client";
 import { inject, injectable } from "tsyringe";
-import { ICostumerRepository } from "../../../../shared/repositories/ICostumerRepository";
+import { ICostumerRepository } from "../../../company/infra/repositories/ICostumersRepository";
 
 
 @injectable()
@@ -12,16 +12,7 @@ class GetCostumerProfielUseCase {
     ) { }
 
     async execute(id: string): Promise<Service | void> {
-        const ifCostumerExists = await this.costumerRepository.findCostumerById(id);
 
-        if (ifCostumerExists) {
-            console.log("Costumer does not exists");
-            return;
-        }
-
-        const costumerProfile = await this.costumerRepository.getCostumerProfile(id);
-
-        return costumerProfile;
     }
 }
 

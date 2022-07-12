@@ -1,13 +1,13 @@
 import { Router } from "express";
-import { CreateNewCostumerController } from "../../../modules/employee/useCases/CreateNewCostumer/CreateNewCostumerController";
+import { CreateNewCostumerPresencialController } from "../../../modules/employee/useCases/CreateNewCostumerPresencial/CreateNewCostumerPresencialController";
 import { GetCostumerProfileController } from "../../../modules/employee/useCases/GetCostumerProfile/GetCostumerProfileController";
 
 const costumerRoutes = Router();
 
-const createNewCostumerController = new CreateNewCostumerController();
+const createNewCostumerPresencialController = new CreateNewCostumerPresencialController();
 const getCostumerProfileController = new GetCostumerProfileController();
 
-costumerRoutes.post("/", createNewCostumerController.handle);
+costumerRoutes.post("/create/presencial", createNewCostumerPresencialController.handle);
 costumerRoutes.get("/", getCostumerProfileController.handle);
 
 
